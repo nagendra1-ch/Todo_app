@@ -1,14 +1,12 @@
 import React, { useState } from 'react'
 
-const Todo = () => {
-    const [input, setInput] = useState('')
 
-    
-    
+const Todo = (props) => {
+    const [input, setInput] = useState('')
 
     return (
         <>
-            hello
+            <li>{props.name}</li>
         </>
     )
 }

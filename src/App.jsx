@@ -1,37 +1,41 @@
-import { useState } from 'react'
-import './App.css'
+import { useState } from "react"
+import React, { useEffect } from 'react'
+import Todo from './components/Todo'
 
-function App() {
-    const [input, setInput] = useState('')
-    const [todos,setTodos]=useState([])
-    
-    const addTodo = (e) => {
-        e.preventDefault()  
-        setInput(e.target.value)
-        console.log(input)
-        let newtodos=[...todos,input]
-        setTodos(newtodos)
-        localStorage.setItem("todo",JSON.stringify(todos))
-        console.log(todos)
-        setInput('')
-    }
+const App = () => {
+  const [inp,setInp]=useState("")
+  const [todos,setTodos]=useState(()=>{
+    const savedTodos=localStorage.getItem("todos")
+    return savedTodos? JSON.parse(savedTodos):[]
+  })
+  const addtodo=(e)=>{
+    e.preventDefault()
+    setTodos([...todos,inp])
+    console.log(todos)
+  }
+  const deleting=(key)=>{
+    todos.shift(key,1)
+    setTodos(todos)
+    localStorage.setItem("todos",JSON.stringify(todos))
+  }
 
+  useEffect(()=>{localStorage.setItem("todos",JSON.stringify(todos))},[todos])
     return (
-      <>
-        <h2 style={{ textAlign: 'center' }}>Todo Application</h2>
-        <form onSubmit={addTodo}>
-            <input
-                type="text"  placeholder='Enter Todo' value={input} onChange={(e)=>{setInput(e.target.value)}} />
-            <button type="submit">Add Todo</button>
+      <div> 
+        <form onSubmit={addtodo}>
+          <input type='text' placeholder='Enter Todo' onChange={(e)=>setInp(e.target.value)}/>
+          <button type='submit'>Add Todo</button>
         </form>
         <ul>
-        {todos.map((todo, index) => (
-          <li key={index}>{todo}</li>
-        ))}
-      </ul>
-      </>
+          {
+            todos.map((todo,index)=>(
+              <li key={index}>{todo} <button onClick={()=>{deleting({index})}} >Delete</button></li>
+            ))
+          }
+        </ul>
+
+      </div>
     )
 }
 
 export default App
-
