@@ -1,0 +1,21 @@
+.Completed{
+    color:white;
+    background-color: green;
+}
+.Pending{
+    color:white;
+    background-color: red;
+    padding: 300px;
+    margin:20px;
+}
+.takinginp{
+    text-align: left;
+}
+
+.table{
+    text-align: left;
+    margin:30px;
+}
+tr{
+    margin:30px
+}
