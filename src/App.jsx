@@ -1,6 +1,5 @@
 import { useState } from "react"
 import React, { useEffect } from 'react'
-import Todo from './components/Todo'
 import "./styles/checkList.css"
 
 const App = () => {
@@ -44,13 +43,13 @@ const App = () => {
 
 
         {/* displaying todos */}
-        <table className="table">
+        <h4>
           {
-            todos.map((todo,index)=>(<tr className={checkList[index]?"Completed":"Pending"}>
-              <td key={index}  >{todo}</td><td> <button onClick={()=>{checkPending(index)}} > {checkList[index]?"Completed":"Pending"} </button></td> <td> <button onClick={()=>{deleting(index)}} >Delete</button></td>
-            </tr>))
+            todos.map((todo,index)=>(
+              <p className="todos"   key={index}  ><p className="text"> {todo} </p><p className="buttons"><button className={checkList[index]?"rows Completed":"rows Pending"} onClick={()=>{checkPending(index)}} > {checkList[index]?"Completed":"Pending"} </button><button onClick={()=>{deleting(index)}} >Delete</button></p></p>
+            ))
           }
-        </table>
+        </h4>
         </div>
         </center>
       

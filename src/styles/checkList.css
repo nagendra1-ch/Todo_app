@@ -1,21 +1,28 @@
+
+button{
+    color:white;
+    background-color: blue;
+    margin:5px;
+    padding:5px;
+}
+
+.Pending{
+    background-color: red;
+    color:white;
+}
 .Completed{
     color:white;
     background-color: green;
 }
-.Pending{
-    color:white;
-    background-color: red;
-    padding: 300px;
-    margin:20px;
+.todos{
+    border:1px solid black;
+    margin: auto;
+    display:flex;
+    margin:10px 400px;
 }
-.takinginp{
+.text{
     text-align: left;
 }
-
-.table{
-    text-align: left;
-    margin:30px;
-}
-tr{
-    margin:30px
+.buttons{
+    text-align: right;
 }
